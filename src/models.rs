@@ -100,14 +100,14 @@ pub struct CallbackIframe {
     pub co_rate: Option<Decimal>,
 }
 
-#[derive(Deserialize, Serialize, ToSchema)]
+#[derive(Deserialize, Serialize, ToSchema, Debug)]
 #[serde(rename_all = "lowercase")]
 pub enum Language {
     En,
     Ua,
 }
 
-#[derive(Deserialize, Serialize, ToSchema)]
+#[derive(Deserialize, Serialize, ToSchema, Debug)]
 pub struct RequestIframe {
     pub merchant: String,
     pub order: String,

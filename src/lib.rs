@@ -6,6 +6,7 @@ use serde::Serialize;
 mod errors;
 mod models;
 
+pub use errors::*;
 pub use models::*;
 
 #[derive(Clone)]
