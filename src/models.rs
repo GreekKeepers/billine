@@ -94,6 +94,7 @@ pub struct CallbackIframe {
     pub co_cur: Option<String>,
     pub co_merchant_id: String,
     pub co_merchant_uuid: String,
+    #[serde(skip_serializing)]
     pub co_sign: String,
     pub co_base_amount: Option<Decimal>,
     pub co_base_currency: Option<String>,
@@ -214,5 +215,28 @@ mod tests {
         let signature = md5_signature(&data, "SecRetKey0123");
 
         assert_eq!(signature, "HyTFPDEwJjcnCMmD/AE5wg==");
+    }
+
+    #[test]
+    fn test_skip_serialize() {
+        let data = CallbackIframe {
+            co_inv_id: Default::default(),
+            co_inv_crt: Default::default(),
+            co_inv_prc: Default::default(),
+            co_inv_st: Status::Success,
+            co_order_no: Default::default(),
+            co_amount: Default::default(),
+            co_to_wlt: Default::default(),
+            co_cur: Default::default(),
+            co_merchant_id: Default::default(),
+            co_merchant_uuid: Default::default(),
+            co_sign: "signature".into(),
+            co_base_amount: Default::default(),
+            co_base_currency: Default::default(),
+            co_rate: Default::default(),
+        };
+        let signature = serialize(&data);
+
+        println!("{:?}", signature);
     }
 }
