@@ -6,6 +6,8 @@ use serde::Serialize;
 mod errors;
 mod models;
 
+pub use models::*;
+
 #[derive(Clone)]
 pub struct Billine {
     secret_key: String,
