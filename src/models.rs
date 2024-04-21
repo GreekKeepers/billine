@@ -72,7 +72,7 @@ pub fn sha256_signature<T: Serialize>(data: &T, secret_key: &str) -> String {
     signature
 }
 
-#[derive(Deserialize, Serialize, ToSchema)]
+#[derive(Deserialize, Serialize, ToSchema, Debug)]
 #[serde(rename_all = "lowercase")]
 pub enum Status {
     Success,
@@ -80,7 +80,7 @@ pub enum Status {
 }
 
 /// Callback model for Iframe/h2h
-#[derive(Deserialize, Serialize, ToSchema)]
+#[derive(Deserialize, Serialize, ToSchema, Debug)]
 pub struct CallbackIframe {
     pub co_inv_id: String,
     #[serde(with = "date")]
