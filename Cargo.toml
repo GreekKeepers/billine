@@ -20,6 +20,7 @@ chrono = "0.4.34"
 tokio = "1.36.0"
 itertools = "0.12.1"
 md-5 = "0.10.6"
+utoipa = { version = "3", features = ["chrono", "decimal"] }
 
 [dev-dependencies]
 tokio = { version = "1.36.0", features = ["rt", "macros"] }

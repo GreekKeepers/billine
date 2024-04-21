@@ -5,6 +5,7 @@ use md5::{Digest, Md5};
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use sha2::Sha256;
+use utoipa::ToSchema;
 
 fn sort_alphabetically<T: Serialize, S: serde::Serializer>(
     value: &T,
@@ -71,7 +72,7 @@ pub fn sha256_signature<T: Serialize>(data: &T, secret_key: &str) -> String {
     signature
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, ToSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Status {
     Success,
@@ -79,7 +80,7 @@ pub enum Status {
 }
 
 /// Callback model for Iframe/h2h
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, ToSchema)]
 pub struct CallbackIframe {
     pub co_inv_id: String,
     #[serde(with = "date")]
@@ -99,14 +100,14 @@ pub struct CallbackIframe {
     pub co_rate: Option<Decimal>,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, ToSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum Language {
     En,
     Ua,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, ToSchema)]
 pub struct RequestIframe {
     pub merchant: String,
     pub order: String,
